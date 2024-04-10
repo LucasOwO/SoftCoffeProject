@@ -3,5 +3,6 @@ from . import views
 
 #todas las urls van aquí
 urlpatterns = [
-    path('', views.mostrarpag)
+    path('', views.mostrarMain),
+    path('login', views.mostrarLogin)
 ]
