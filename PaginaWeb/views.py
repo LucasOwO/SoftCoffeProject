@@ -11,3 +11,7 @@ def mostrarMain(request):
 def mostrarLogin(request):
     context = {}
     return render(request, 'Login/login.html', context)
+
+def mostrarLobby(request):
+    context = {}
+    return render(request, 'Lobby/lobby.html', context)
