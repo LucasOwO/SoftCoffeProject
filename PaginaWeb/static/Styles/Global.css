@@ -41,3 +41,11 @@ body{
 .menu li a:hover{
     background-color: #ef8354;
 }
+
+.carousel-item {
+
+    width: 900px;
+    height: 900px;
+    justify-content: center;
+
+}
