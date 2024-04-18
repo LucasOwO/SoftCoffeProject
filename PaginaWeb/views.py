@@ -3,15 +3,18 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def mostrarMain(request):
+def index(request):
     context = {}
-    return render(request, 'Main/Main.html', context)
+    return render(request, 'index.html', context)
 
-
-def mostrarLogin(request):
+def login(request):
     context = {}
-    return render(request, 'Login/login.html', context)
+    return render(request, 'login.html', context)
 
-def mostrarLobby(request):
+def lobby(request):
     context = {}
-    return render(request, 'Lobby/lobby.html', context)
+    return render(request, 'lobby.html', context)
+
+def registro(request):
+    context = {}
+    return render(request, 'registro.html', context)
