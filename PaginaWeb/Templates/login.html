@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <!-- Agregar enlaces a los archivos CSS de Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .error-message {
+            color: red;
+            display: none;
+            text-align: center; /* Alinea los mensajes al centro */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="mt-5 text-center">Iniciar Sesión</h2>
+            <form class="mt-4" id="loginForm" action="login_process.php" method="post" novalidate>
+                <div class="form-group">
+                    <label for="login_email">Correo Electrónico:</label>
+                    <input type="email" class="form-control" id="login_email" name="login_email" required>
+                    <span id="loginEmailError" class="error-message">Ingrese su correo electrónico</span>
+                </div>
+                <div class="form-group">
+                    <label for="login_password">Contraseña:</label>
+                    <input type="password" class="form-control" id="login_password" name="login_password" required>
+                    <span id="loginPasswordError" class="error-message">Ingrese su contraseña</span>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                <p id="error-message" class="mt-3 text-center"></p>
+                <p class="mt-3 text-center">¿Aún no tienes una cuenta? <a href="registro.html">Regístrate aquí</a>.</p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Agregar enlaces a los archivos JavaScript de Bootstrap y jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="static/scripts/validaciones.js"></script>
+
+</body>
+</html>
