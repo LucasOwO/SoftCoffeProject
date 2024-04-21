@@ -18,3 +18,19 @@ def lobby(request):
 def registro(request):
     context = {}
     return render(request, 'registro.html', context)
+
+def mostrarProductos(request):
+    context = {}
+    return render(request, 'Productos.html', context)
+
+def mostrarOfertas(request):
+    context = {}
+    return render(request, 'ofertas.html', context)
+
+def acercaDeNostros(request):
+    context = {}
+    return render(request, 'acercadenosotros.html', context)
+
+def mostrarCarta(request):
+    context = {}
+    return render(request, 'carta.html', context)

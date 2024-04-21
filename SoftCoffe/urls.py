@@ -20,7 +20,11 @@ urlpatterns = [
     path('', include('PaginaWeb.urls')),
     path('login', include('PaginaWeb.urls')),
     path('registro', include('PaginaWeb.urls')),
-    path('lobby', include('PaginaWeb.urls'))
+    path('lobby', include('PaginaWeb.urls')),
+    path('Productos', include('PaginaWeb.urls')),
+    path('carta', include('PaginaWeb.urls')),
+    path('ofertas', include('PaginaWeb.urls')),
+    path('acercadenosotros', include('PaginaWeb.urls'))
     #path('admin/', admin.site.urls),
     
 ]
