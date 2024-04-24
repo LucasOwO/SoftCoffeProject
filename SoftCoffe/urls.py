@@ -24,7 +24,7 @@ urlpatterns = [
     path('Productos', include('PaginaWeb.urls')),
     path('carta', include('PaginaWeb.urls')),
     path('ofertas', include('PaginaWeb.urls')),
-    path('acercadenosotros', include('PaginaWeb.urls'))
+    path('nosotros', include('PaginaWeb.urls'))
     #path('admin/', admin.site.urls),
     
 ]

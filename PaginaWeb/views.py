@@ -29,7 +29,7 @@ def mostrarOfertas(request):
 
 def acercaDeNostros(request):
     context = {}
-    return render(request, 'acercadenosotros.html', context)
+    return render(request, 'nosotros.html', context)
 
 def mostrarCarta(request):
     context = {}
