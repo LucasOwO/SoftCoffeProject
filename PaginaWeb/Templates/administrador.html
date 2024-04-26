@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Administrador</title>
+        <link rel="stylesheet" href="static/styles/Global.css">
+        <link rel="stylesheet" href="static/styles/admin.css">
+    </head>
+    <body>
+        <div>
+            <h1>PRODUCTOS LISTADOS</h1>
+            <ul>
+                {% for n in productos%}
+                <li>{{n.nombre}}</li>
+                {% endfor %}
+            </ul>
+        </div><br><br>
+        <!--
+        <div id="seccion_listar">
+            <ul>
+                <li class="grid">
+
+                </li>
+                {% for n in productos%}
+                <li class="item">{{n.id_prod}} {{n.nombre}} {{n.precio}} {{n.stock}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        -->
+
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Stock</th>
+            </tr>
+            {% for n in productos %}
+            <tr>
+                <th>{{n.id_prod}}</th>
+                <th>{{n.nombre}}</th>
+                <th>${{n.precio}}</th>
+                <th>{{n.stock}}</th>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

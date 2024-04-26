@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import producto
 
 
 # Create your views here.
@@ -18,3 +19,7 @@ def lobby(request):
 def registro(request):
     context = {}
     return render(request, 'registro.html', context)
+
+def administrador(request):
+    lista_productos = producto.objects.all()
+    return render(request, 'administrador.html', {"productos": lista_productos})
