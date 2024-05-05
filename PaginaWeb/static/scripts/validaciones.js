@@ -111,3 +111,214 @@ $(document).ready(function() {
         }
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Funcionalidades Carrito
+const btnCart = document.querySelector('.container-cart-icon');
+const containerCartProducts = document.querySelector('.container-cart-products');
+
+btnCart.addEventListener('click', () => {
+    containerCartProducts.classList.toggle('hidden-cart');
+});
+
+const cartInfo = document.querySelector('.cart-product');
+const rowProduct = document.querySelector('.row-product');
+
+const productsList = document.querySelector('.container-items');
+
+let allProducts = [];
+
+const valorTotal = document.querySelector('.total-pagar');
+const countProducts = document.querySelector('#contador-productos');
+const cartEmpty = document.querySelector('.cart-empty');
+const cartTotal = document.querySelector('.cart-total');
+
+productsList.addEventListener('click', e => {
+    if (e.target.classList.contains('btn-add-cart')) {
+        const product = e.target.parentElement;
+
+        const infoProduct = {
+            quantity: 1,
+            title: product.querySelector('h2').textContent,
+            price: product.querySelector('p').textContent,
+        };
+
+        const exits = allProducts.some(
+            product => product.title === infoProduct.title
+        );
+
+        if (exits) {
+            const products = allProducts.map(product => {
+                if (product.title === infoProduct.title) {
+                    product.quantity++;
+                    return product;
+                } else {
+                    return product;
+                }
+            });
+            allProducts = [...products];
+        } else {
+            allProducts = [...allProducts, infoProduct];
+        }
+
+        showHTML();
+    }
+});
+
+rowProduct.addEventListener('click', e => {
+    if (e.target.classList.contains('icon-close')) {
+        const product = e.target.parentElement;
+        const title = product.querySelector('p').textContent;
+
+        allProducts = allProducts.filter(
+            product => product.title !== title
+        );
+
+        showHTML();
+    }
+});
+
+rowProduct.addEventListener('click', e => {
+    if (e.target.classList.contains('icon-add')) {
+        const product = e.target.parentElement.parentElement;
+        const title = product.querySelector('.titulo-producto-carrito').textContent;
+
+        allProducts.forEach(item => {
+            if (item.title === title) {
+                item.quantity++;
+            }
+        });
+
+        showHTML();
+    }
+});
+
+rowProduct.addEventListener('click', e => {
+    if (e.target.classList.contains('icon-remove')) {
+        const product = e.target.parentElement.parentElement;
+        const title = product.querySelector('.titulo-producto-carrito').textContent;
+
+        allProducts.forEach(item => {
+            if (item.title === title && item.quantity > 1) {
+                item.quantity--;
+            } else if (item.title === title && item.quantity === 1) {
+                allProducts = allProducts.filter(
+                    product => product.title !== title
+                );
+            }
+        });
+
+        showHTML();
+    }
+});
+
+
+const showHTML = () => {
+    if (!allProducts.length) {
+        cartEmpty.classList.remove('hidden');
+        rowProduct.classList.add('hidden');
+        cartTotal.classList.add('hidden');
+    } else {
+        cartEmpty.classList.add('hidden');
+        rowProduct.classList.remove('hidden');
+        cartTotal.classList.remove('hidden');
+    }
+
+    rowProduct.innerHTML = '';
+
+    let total = 0;
+    let totalOfProducts = 0;
+
+    allProducts.forEach(product => {
+        const containerProduct = document.createElement('div');
+        containerProduct.classList.add('cart-product');
+
+        containerProduct.innerHTML = `
+            <div class="info-cart-product">
+                <button class="icon-remove">-</button>
+                <span class="cantidad-producto-carrito">${product.quantity}</span>
+                <button class="icon-add">+</button>
+                <p class="titulo-producto-carrito">${product.title}</p>
+                <span class="precio-producto-carrito">${product.price}</span>
+            </div>
+        `;
+
+        rowProduct.append(containerProduct);
+
+        total += parseInt(product.quantity) * parseInt(product.price.slice(1));
+        totalOfProducts += product.quantity;
+    });
+
+    valorTotal.innerText = `$${total}`;
+    countProducts.innerText = totalOfProducts;
+};
+
+const pagarButton = document.createElement('button');
+pagarButton.innerText = 'Pagar';
+pagarButton.classList.add('btn', 'btn-pagar');
+pagarButton.addEventListener('click', function() {
+    window.location.href = 'ruta-a-tu-pagina';
+});
+containerCartProducts.appendChild(pagarButton);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
