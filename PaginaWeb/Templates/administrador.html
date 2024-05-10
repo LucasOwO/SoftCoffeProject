@@ -3,46 +3,45 @@
 <html>
     <head>
         <title>Administrador</title>
-        <link rel="stylesheet" href="static/styles/Global.css">
-        <link rel="stylesheet" href="static/styles/admin.css">
+        <link rel="stylesheet" href="static/Styles/Global.css">
+        <link rel="stylesheet" href="static/Styles/Admin.css">
     </head>
     <body>
-        <div>
-            <h1>PRODUCTOS LISTADOS</h1>
-            <ul>
-                {% for n in productos%}
-                <li>{{n.nombre}}</li>
-                {% endfor %}
-            </ul>
-        </div><br><br>
-        <!--
-        <div id="seccion_listar">
-            <ul>
-                <li class="grid">
 
-                </li>
-                {% for n in productos%}
-                <li class="item">{{n.id_prod}} {{n.nombre}} {{n.precio}} {{n.stock}}</li>
-                {% endfor %}
-            </ul>
-        </div>
-        -->
+        <section id="seccion_administrar">
+            
+            <!-- Lista de elementos -->
+            <h1>Listar productos</h1>
+           <div id="recuadro_listar">
+                <!-- items -->
+                <div>
+                    <div class="contenedor_item"> 
+                        <div class="item bg_gris txt_blanco">ID</div>
+                        <div class="item bg_gris txt_blanco">Nombre</div>
+                        <div class="item bg_gris txt_blanco">Precio</div>
+                        <div class="item bg_gris txt_blanco">Stock</div>
 
-        <table>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Stock</th>
-            </tr>
-            {% for n in productos %}
-            <tr>
-                <th>{{n.id_prod}}</th>
-                <th>{{n.nombre}}</th>
-                <th>${{n.precio}}</th>
-                <th>{{n.stock}}</th>
-            </tr>
-            {% endfor %}
-        </table>
+                        {% for p in productos %}
+
+                        <div class="item">{{ p.id_prod }}</div>
+                        <div class="item">{{ p.nombre }}</div>
+                        <div class="item">${{ p.precio }}</div>
+                        <div class="item">{{ p.stock }}</div>
+
+                        {% endfor %}
+                    </div>
+                </div>
+
+                
+            </div> 
+            
+            <!-- Barra de acciones-->
+            <div>
+                <button>Agregar</button>
+                <button>Eliminar</button>
+                <button>Editar</button>
+            </div>
+        </section>
+        
     </body>
 </html>

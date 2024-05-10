@@ -23,3 +23,7 @@ def registro(request):
 def administrador(request):
     lista_productos = producto.objects.all()
     return render(request, 'administrador.html', {"productos": lista_productos})
+
+def listaProductos(request):
+    lista_productos = producto.objects.all()
+    return render(request, 'iframes/listaProductos.html', {"productos": lista_productos})
