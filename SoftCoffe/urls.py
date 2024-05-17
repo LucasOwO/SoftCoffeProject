@@ -22,11 +22,10 @@ urlpatterns = [
     path('registro', include('PaginaWeb.urls')),
     path('lobby', include('PaginaWeb.urls')),
     path('administrador', include('PaginaWeb.urls')),
+    path('agregar_producto', include('PaginaWeb.urls')),
     path('admin/', admin.site.urls),
-    path('listaProductos', admin.site.urls),
     path('Productos', include('PaginaWeb.urls')),
     path('carta', include('PaginaWeb.urls')),
     path('ofertas', include('PaginaWeb.urls')),
     path('nosotros', include('PaginaWeb.urls'))
-    #path('admin/', admin.site.urls),
 ]

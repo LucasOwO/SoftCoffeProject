@@ -8,7 +8,7 @@ urlpatterns = [
     path('lobby', views.lobby),
     path('registro', views.registro),
     path('administrador', views.administrador),
-    path('listaProductos', views.listaProductos)
+    path('agregar_producto', views.agregar_producto),
     path('Productos', views.mostrarProductos),
     path('carta', views.mostrarCarta),
     path('nosotros', views.acercaDeNostros),
