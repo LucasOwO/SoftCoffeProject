@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import producto
 
 
 # Create your views here.
@@ -19,6 +20,14 @@ def registro(request):
     context = {}
     return render(request, 'registro.html', context)
 
+def administrador(request):
+    lista_productos = producto.objects.all()
+    return render(request, 'administrador.html', {"productos": lista_productos})
+
+def listaProductos(request):
+    lista_productos = producto.objects.all()
+    return render(request, 'iframes/listaProductos.html', {"productos": lista_productos})
+  
 def mostrarProductos(request):
     context = {}
     return render(request, 'Productos.html', context)

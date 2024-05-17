@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Administrador</title>
+        <link rel="stylesheet" href="static/Styles/Global.css">
+        <link rel="stylesheet" href="static/Styles/Admin.css">
+    </head>
+    <body>
+
+        <section id="seccion_administrar">
+            
+            <!-- Lista de elementos -->
+            <h1>Listar productos</h1>
+           <div id="recuadro_listar">
+                <!-- items -->
+                <div>
+                    <div class="contenedor_item"> 
+                        <div class="item bg_gris txt_blanco">ID</div>
+                        <div class="item bg_gris txt_blanco">Nombre</div>
+                        <div class="item bg_gris txt_blanco">Precio</div>
+                        <div class="item bg_gris txt_blanco">Stock</div>
+
+                        {% for p in productos %}
+
+                        <div class="item">{{ p.id_prod }}</div>
+                        <div class="item">{{ p.nombre }}</div>
+                        <div class="item">${{ p.precio }}</div>
+                        <div class="item">{{ p.stock }}</div>
+
+                        {% endfor %}
+                    </div>
+                </div>
+
+                
+            </div> 
+            
+            <!-- Barra de acciones-->
+            <div>
+                <button>Agregar</button>
+                <button>Eliminar</button>
+                <button>Editar</button>
+            </div>
+        </section>
+        
+    </body>
+</html>
