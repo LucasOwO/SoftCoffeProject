@@ -27,3 +27,19 @@ def administrador(request):
 def listaProductos(request):
     lista_productos = producto.objects.all()
     return render(request, 'iframes/listaProductos.html', {"productos": lista_productos})
+  
+def mostrarProductos(request):
+    context = {}
+    return render(request, 'Productos.html', context)
+
+def mostrarOfertas(request):
+    context = {}
+    return render(request, 'ofertas.html', context)
+
+def acercaDeNostros(request):
+    context = {}
+    return render(request, 'nosotros.html', context)
+
+def mostrarCarta(request):
+    context = {}
+    return render(request, 'carta.html', context)
