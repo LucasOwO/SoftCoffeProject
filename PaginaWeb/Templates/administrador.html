@@ -20,6 +20,7 @@
                         <div class="item_admin bg_gris txt_blanco">Nombre</div>
                         <div class="item_admin bg_gris txt_blanco">Precio</div>
                         <div class="item_admin bg_gris txt_blanco">Stock</div>
+                        <div class="item_admin bg_gris txt_blanco">Eliminar_producto</div>
 
                         {% for p in productos %}
 
@@ -27,25 +28,19 @@
                         <div class="item_admin">{{ p.nombre }}</div>
                         <div class="item_admin">${{ p.precio }}</div>
                         <div class="item_admin">{{ p.stock }}</div>
+                        <div class="item_admin"><a href="eliminar_producto/{{p.id_prod}}">Eliminar</a></div>
 
                         {% endfor %}
                     </div>
                 </div>
-
-                
             </div> 
-            
-            <!-- Barra de acciones-->
-            <div>
-                <button>Agregar</button>
-                <button>Eliminar</button>
-                <button>Editar</button>
-            </div>
         </section>
 
         <!-- formulario agregar producto -->
 
         <!--/agregar_producto/-->
+
+        <br><br>
         <form action="agregar_producto" method="POST"> {%csrf_token%}
             <input type="text" id="txt_id" name="txt_id" class="control-form" placeholder="ID" required><br><br>
             <input type="text" id="txt_nombre" name="txt_nombre" class="control-form" placeholder="NOMBRE" required><br><br>

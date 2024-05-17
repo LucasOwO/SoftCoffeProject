@@ -50,3 +50,11 @@ def agregar_producto(request):
     nuevo_producto = producto.objects.create(id_prod=id_p, nombre=nom_p, precio=precio_p, stock=stock_p, descripcion=desc_p)
     return redirect('/administrador')
     
+def eliminar_producto(request,id_prod):
+    prod = producto.objects.get(id_prod=id_prod)
+    prod.delete()
+
+    return redirect('/administrador')
+
+def editar_producto():
+    return redirect('/administrador')
