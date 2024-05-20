@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from .models import producto
+from paypal.standard.forms import PayPalPaymentsForm
 
 
 # Create your views here.
@@ -58,3 +60,25 @@ def eliminar_producto(request,id_prod):
 
 def editar_producto():
     return redirect('/administrador')
+
+#Cosas Paypal :D
+
+def Pagar(request, valor_prod, nombre_prod):
+
+    # What you want the button to do.
+    paypal_dict = {
+        "business": "lucasalfredosan@gmail.com",
+        "amount": int(valor_prod),
+        "item_name": str(nombre_prod),
+        #"invoice": "unique-invoice-id", No nos sirve todavía
+        "notify_url": request.build_absolute_uri(reverse('paypal-ipn')),
+        "return": request.build_absolute_uri(reverse('/administrador')),
+        "cancel_return": request.build_absolute_uri(reverse('/administrador')),
+        #"custom": "premium_plan",  # Custom command to correlate to some function later (optional)
+    }
+
+    # Create the instance.
+    form = PayPalPaymentsForm(initial=paypal_dict)
+    context = {"form": form}
+    return render(request, "payment.html", context)
+
