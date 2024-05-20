@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <title>Administrador</title>
+        <link type="text/css" rel="stylesheet" href="static/Styles/admin.css">
+    </head>
+    <body>
+
+        <section id="seccion_administrar">
+            
+            <!-- Lista de elementos -->
+            <h1>Listar productos</h1>
+            <div id="recuadro_listar">
+                <!-- items -->
+                <div>
+                    <div class="contenedor_item_admin"> 
+                        <div class="item_admin bg_gris txt_blanco">ID</div>
+                        <div class="item_admin bg_gris txt_blanco">Nombre</div>
+                        <div class="item_admin bg_gris txt_blanco">Precio</div>
+                        <div class="item_admin bg_gris txt_blanco">Stock</div>
+                        <div class="item_admin bg_gris txt_blanco">Eliminar_producto</div>
+
+                        {% for p in productos %}
+
+                        <div class="item_admin">{{ p.id_prod }}</div>
+                        <div class="item_admin">{{ p.nombre }}</div>
+                        <div class="item_admin">${{ p.precio }}</div>
+                        <div class="item_admin">{{ p.stock }}</div>
+                        <div class="item_admin"><a href="eliminar_producto/{{p.id_prod}}">Eliminar</a></div>
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </div> 
+        </section>
+
+        <!-- formulario agregar producto -->
+
+        <!--/agregar_producto/-->
+
+        <br><br>
+        <div>
+            <h1>Agregar Producto</h1>
+            <form action="agregar_producto" method="POST"> {%csrf_token%}
+                <input type="text" id="txt_id" name="txt_id" class="control-form" placeholder="ID" required><br><br>
+                <input type="text" id="txt_nombre" name="txt_nombre" class="control-form" placeholder="NOMBRE" required><br><br>
+                <input type="text" id="txt_precio" name="txt_precio" class="control-form" placeholder="PRECIO" required><br><br>
+                <input type="text" id="txt_stock" name="txt_stock" class="control-form" placeholder="STOCK" required><br><br>
+                <textarea id="txt_desc" name="txt_desc" class="control-form" placeholder="DESCRIPCION"></textarea><br><br>
+                <button type="submit">Agregar</button>
+            </form>
+        </div>
+        
+    </body>
+</html>
