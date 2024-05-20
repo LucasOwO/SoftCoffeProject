@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(255, 234, 234);
+    background-color: #da1c1c;
 }
 
 ul {
@@ -17,32 +17,32 @@ ul {
 }
 
 
-#seccion_administrar{
+section .seccion_administrar{
     width: 80vw;
-    height: 200px;
-    margin-top: 20vh;
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
 }
 
 
-#recuadro_listar{
+div .recuadro_listar{
     border: solid 1px #000000;
-    background-color: #c3c3c3;
+    background-color: hsl(0, 0%, 76%);
+    height: 400px;
     overflow-y: scroll;
 }
 
-.contenedor_item{
+.contenedor_item_admin{
     width: 100%;
     display: grid;
-    grid-template-columns: 5% 30% 20% 10%;
+    grid-template-columns: 5% auto auto auto auto;
     row-gap: 0px;
 }
 
-.item{
+.item_admin{
     border: 1px solid rgba(163, 161, 161, 0.8);
     padding: 2px 3px;
     font-size: 15px;
-    text-align:left;
+    text-align:right;
 }
 
