@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(218, 28, 28);
+    background-color: #e8e8e8
 }
 
 ul {
@@ -13,11 +13,11 @@ ul {
 }
 
 .txt_blanco{
-    color: #ffffff;
+    color: #000000;
 }
 
 
-section .seccion_administrar{
+section #seccion_administrar{
     width: 80vw;
     margin-top: 20px;
     margin-left: auto;
@@ -25,7 +25,7 @@ section .seccion_administrar{
 }
 
 
-div .recuadro_listar{
+div #recuadro_listar{
     border: solid 1px #000000;
     background-color: hsl(0, 0%, 76%);
     height: 400px;
