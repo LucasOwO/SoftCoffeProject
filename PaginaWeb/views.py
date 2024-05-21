@@ -24,7 +24,6 @@ def registro(request):
 
 def administrador(request):
     lista_productos = producto.objects.all()
-    ult_p = len(lista_productos)
     return render(request, 'administrador.html', {"productos": lista_productos})
   
 def mostrarProductos(request):
@@ -76,7 +75,7 @@ def Pagar(request, valor_prod, nombre_prod):
         #"invoice": "unique-invoice-id", No nos sirve todavía
         "notify_url": request.build_absolute_uri(reverse('paypal-ipn')),
         "return": request.build_absolute_uri(reverse('/administrador')),
-        "cancel_return": request.build_absolute_uri(reverse('/administrador')),
+        "cancel_return": request.build_absolute_uri(reverse('/')),
         #"custom": "premium_plan",  # Custom command to correlate to some function later (optional)
     }
 
