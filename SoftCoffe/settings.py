@@ -123,9 +123,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = [
-    BASE_DIR / 'static/imagenes',
-    BASE_DIR / 'static/styles',
-    BASE_DIR / 'static/scripts'
+    BASE_DIR / 'PaginaWeb/static/imagenes',
+    BASE_DIR / 'PaginaWeb/static/styles',
+    BASE_DIR / 'PaginaWeb/static/scripts'
 ]
 
 # Default primary key field type
