@@ -27,8 +27,8 @@ def administrador(request):
     return render(request, 'administrador.html', {"productos": lista_productos})
   
 def mostrarProductos(request):
-    context = {}
-    return render(request, 'Productos.html', context)
+    lista_p = producto.objects.filter(categoria="Cafe")
+    return render(request, 'Productos.html', {"productos": lista_p})
 
 def mostrarOfertas(request):
     context = {}

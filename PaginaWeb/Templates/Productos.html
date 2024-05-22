@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -88,14 +89,28 @@
 
 <section class="contenedor">
     <div class="container-items">
-      <div class="item">
-        <div class="info-product">
-            <h2>Moca</h2>
-            <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
-            <p class="price">$2500</p>
-            <button class="btn-add-cart">Añadir al carrito</button>
+        {% for p in productos %}
+        <div class="item">
+            <div class="info-product">
+                <h2>{{p.nombre}}</h2>
+                <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
+                <p class="price">${{p.precio}}</p>
+                <button class="btn-add-cart">Añadir al carrito</button>
+            </div>
         </div>
+        {% endfor %}
     </div>
+      
+    <!--
+    <div class="container-items">
+        <div class="item">
+            <div class="info-product">
+                <h2>Moca</h2>
+                <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
+                <p class="price">$2500</p>
+                <button class="btn-add-cart">Añadir al carrito</button>
+            </div>
+        </div>
 
         <div class="item">
             <div class="info-product">
@@ -244,6 +259,7 @@
                 <button class="btn-add-cart">Añadir al carrito</button>
             </div>
         </div>
+        -->
 </section>
 <div id="myModal" class="modal">
   <div class="modal-content">
