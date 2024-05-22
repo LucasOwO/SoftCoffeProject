@@ -45,13 +45,15 @@ def mostrarCarta(request):
 def agregar_producto(request):
     nom_p = request.POST['txt_nombre']
     precio_p = request.POST['txt_precio']
+    categ_p = request.POST['txt_categ']
     stock_p = request.POST['txt_stock']
     desc_p = request.POST['txt_desc']
+    img_p = request.POST['archivo_img']
 
     list_p = producto.objects.all()
     id_p = len(list_p)+1
 
-    nuevo_producto = producto.objects.create(id_prod=id_p, nombre=nom_p, precio=precio_p, stock=stock_p, descripcion=desc_p)
+    nuevo_producto = producto.objects.create(id_prod=id_p, nombre=nom_p, precio=precio_p, categoria=categ_p,stock=stock_p, descripcion=desc_p, imagen=img_p)
     return redirect('/administrador')
     
 def eliminar_producto(request,id_prod):

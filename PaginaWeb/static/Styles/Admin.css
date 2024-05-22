@@ -43,7 +43,7 @@ ul {
 .contenedor_item_admin{
     width: 100%;
     display: grid;
-    grid-template-columns: 5% auto auto auto auto;
+    grid-template-columns: 5% auto auto auto auto auto;
     row-gap: 0px;
 }
 
