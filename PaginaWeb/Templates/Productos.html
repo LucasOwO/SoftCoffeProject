@@ -89,6 +89,10 @@
 
 <section class="contenedor">
     <div class="container-items">
+
+
+
+        <!-- productos -->
         {% for p in productos %}
         <div class="item">
             <div class="info-product">
@@ -99,167 +103,11 @@
             </div>
         </div>
         {% endfor %}
+    
+    
+    
     </div>
-      
-    <!--
-    <div class="container-items">
-        <div class="item">
-            <div class="info-product">
-                <h2>Moca</h2>
-                <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
-                <p class="price">$2500</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
 
-        <div class="item">
-            <div class="info-product">
-                <h2>Caramelo</h2>
-                <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
-                <p class="price">$2500</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-
-        <div class="item">
-          <div class="info-product">
-            <h2>Expresso</h2>
-          <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
-                <p class="price">$2500</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-
-        <div class="item">
-          <div class="info-product">
-            <h2>Americano</h2>
-          <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
-                <p class="price">$1500</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="item">
-          <div class="info-product">
-            <h2>Latte</h2>
-          <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
-                <p class="price">$1700</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="item">
-          <div class="info-product">
-            <h2>Capuccino</h2>
-          <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
-                <p class="price">$1800</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="item">
-          <div class="info-product">
-            <h2>Mokaccino</h2>
-          <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
-                <p class="price">$2000</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="item">
-          <div class="info-product">
-            <h2>Capuccino Vainilla</h2>
-          <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
-                <p class="price">$1850</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="item">
-          <div class="info-product">
-            <h2>Expresso Doble</h2>
-          <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
-                <p class="price">$1500</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-
-        <div class="item">
-          <div class="info-product">
-            <h2>Capuccino Vegetal</h2>
-          <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
-                <p class="price">$2100</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="item">
-          <div class="info-product">
-            <h2>Máquina de Expresso</h2>
-          <img src="static/imagenes/caf.expreso.jpg" alt="" class="img-item">
-                <p class="price">$120000</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="item">
-          <div class="info-product">
-            <h2>Cafetera italiana</h2>
-          <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
-                <p class="price">$17000</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="item">
-          <div class="info-product">
-            <h2>Prensa Francesa mini</h2>
-          <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
-                <p class="price">$12000</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="item">
-          <div class="info-product">
-            <h2>Prensa Francesa Estándar</h2>
-          <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
-                <p class="price">$12900</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="item">
-          <div class="info-product">
-            <h2>Filtro de tela</h2>
-          <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
-                <p class="price">$1200</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="item">
-          <div class="info-product">
-            <h2>Café en grano molido</h2>
-          <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
-                <p class="price">$3500</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="item">
-          <div class="info-product">
-            <h2>cafe en grano entero "ROBUSTO"</h2>
-          <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
-                <p class="price">$3000</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="item">
-          <div class="info-product">
-            <h2>cafe en grano entero "ARABICO"</h2>
-          <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
-                <p class="price">$2700</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="item">
-          <div class="info-product">
-            <h2>cuchara medidora con prensa"</h2>
-          <img src="static/imagenes/vaso-cafe.jpg" alt="" class="img-item">
-                <p class="price">$1200</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-        -->
 </section>
 <div id="myModal" class="modal">
   <div class="modal-content">
