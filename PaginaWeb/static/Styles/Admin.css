@@ -2,7 +2,6 @@ body{
     background-color: #dcdcdc;
 }
 
-
 ul {
     list-style-type: none;
     margin: 0;
@@ -46,11 +45,7 @@ ul {
 .contenedor_item_admin{
     width: 100%;
     display: grid;
-<<<<<<< HEAD
     grid-template-columns: 5% auto auto auto auto auto;
-=======
-    grid-template-columns: 5% auto auto auto auto;
->>>>>>> main
     row-gap: 0px;
 }
 
@@ -60,9 +55,3 @@ ul {
     font-size: 15px;
     text-align:right;
 }
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> main
