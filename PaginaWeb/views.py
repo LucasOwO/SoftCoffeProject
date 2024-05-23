@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from .models import producto
+from paypal.standard.forms import PayPalPaymentsForm
 
 
 # Create your views here.
@@ -25,8 +27,8 @@ def administrador(request):
     return render(request, 'administrador.html', {"productos": lista_productos})
   
 def mostrarProductos(request):
-    context = {}
-    return render(request, 'Productos.html', context)
+    lista_p = producto.objects.filter(categoria="Cafe")
+    return render(request, 'Productos.html', {"productos": lista_p})
 
 def mostrarOfertas(request):
     context = {}
@@ -41,13 +43,17 @@ def mostrarCarta(request):
     return render(request, 'carta.html', context)
 
 def agregar_producto(request):
-    id_p = request.POST['txt_id']
     nom_p = request.POST['txt_nombre']
     precio_p = request.POST['txt_precio']
+    categ_p = request.POST['txt_categ']
     stock_p = request.POST['txt_stock']
     desc_p = request.POST['txt_desc']
+    img_p = request.POST['archivo_img']
 
-    nuevo_producto = producto.objects.create(id_prod=id_p, nombre=nom_p, precio=precio_p, stock=stock_p, descripcion=desc_p)
+    list_p = producto.objects.all()
+    id_p = len(list_p)+1
+
+    nuevo_producto = producto.objects.create(id_prod=id_p, nombre=nom_p, precio=precio_p, categoria=categ_p,stock=stock_p, descripcion=desc_p, imagen=img_p)
     return redirect('/administrador')
     
 def eliminar_producto(request,id_prod):
@@ -58,3 +64,25 @@ def eliminar_producto(request,id_prod):
 
 def editar_producto():
     return redirect('/administrador')
+
+#Cosas Paypal :D
+
+def Pagar(request, valor_prod, nombre_prod):
+
+    # What you want the button to do.
+    paypal_dict = {
+        "business": "lucasalfredosan@gmail.com",
+        "amount": int(valor_prod),
+        "item_name": str(nombre_prod),
+        #"invoice": "unique-invoice-id", No nos sirve todavía
+        "notify_url": request.build_absolute_uri(reverse('paypal-ipn')),
+        "return": request.build_absolute_uri(reverse('/administrador')),
+        "cancel_return": request.build_absolute_uri(reverse('/')),
+        #"custom": "premium_plan",  # Custom command to correlate to some function later (optional)
+    }
+
+    # Create the instance.
+    form = PayPalPaymentsForm(initial=paypal_dict)
+    context = {"form": form}
+    return render(request, "payment.html", context)
+

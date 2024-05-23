@@ -28,8 +28,10 @@ class producto(models.Model):
     id_prod = models.PositiveIntegerField(primary_key=True)
     nombre = models.CharField(max_length=25)
     precio = models.PositiveIntegerField()
+    categoria = models.CharField(max_length=25, null=True)
     stock = models.PositiveIntegerField()
     descripcion = models.TextField(max_length=300)
+    imagen = models.ImageField(upload_to = 'IMGS/% Y/% m/% d/', null=True)
     
     def __str__(self):
         texto = "{0}"
@@ -47,7 +49,7 @@ class medio_pago(models.Model):
     id_pago = models.PositiveIntegerField(primary_key=True)
     nombre = models.CharField(max_length=10)
     
-    
+
 class pedido_producto(models.Model):
     cod_pedido = models.ForeignKey(pedido, on_delete=models.CASCADE)
     id_producto = models.ForeignKey(producto, on_delete=models.CASCADE)

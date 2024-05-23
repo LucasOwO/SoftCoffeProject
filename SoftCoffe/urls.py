@@ -29,5 +29,6 @@ urlpatterns = [
     path('Productos/', include('PaginaWeb.urls')),
     path('carta/', include('PaginaWeb.urls')),
     path('ofertas/', include('PaginaWeb.urls')),
-    path('nosotros/', include('PaginaWeb.urls'))
+    path('nosotros/', include('PaginaWeb.urls')),
+    path('realizar_pago/', include('PaginaWeb.urls'))
 ]
