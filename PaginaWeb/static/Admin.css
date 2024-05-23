@@ -2,7 +2,6 @@ body{
     background-color: #dcdcdc;
 }
 
-
 ul {
     list-style-type: none;
     margin: 0;
@@ -16,7 +15,7 @@ ul {
 }
 
 .txt_blanco{
-    color: #ffffff;
+    color: #000000;
 }
 
 .txt_area_grande{
@@ -24,11 +23,9 @@ ul {
     width: 400px;
 }
 
-
 /* Id y clases */
 
 .seccion_administrar{
-    color: #ffffff;
     width: 80vw;
     margin-top: 20px;
     margin-left: auto;
@@ -46,11 +43,7 @@ ul {
 .contenedor_item_admin{
     width: 100%;
     display: grid;
-<<<<<<< HEAD
     grid-template-columns: 5% auto auto auto auto auto;
-=======
-    grid-template-columns: 5% auto auto auto auto;
->>>>>>> main
     row-gap: 0px;
 }
 
@@ -61,8 +54,5 @@ ul {
     text-align:right;
 }
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> main
