@@ -4,7 +4,7 @@ from django.urls import reverse
 from .models import producto
 from django.views import View
 from django.views.generic import FormView, TemplateView
-from .funciones import generateAccessToken
+from .funciones import create_order, generateAccessToken
 #
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -95,8 +95,10 @@ def form_valid(self, form):
     return super.form_valid(form)
 
 class CrearOrden(APIView):
+    
     def post(self, request):
 
-        orden = create_order('productos')
-
+        order = create_order('Productos')
+        print('-------------')
+        print(order['id'])
         return Response({'code': 'ok'}, status = status.HTTP_200_OK )

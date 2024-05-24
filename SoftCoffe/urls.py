@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from PaginaWeb.views import PayView, CrearOrden
 
 urlpatterns = [
     path('', include('PaginaWeb.urls')),
@@ -31,6 +32,8 @@ urlpatterns = [
     path('ofertas/', include('PaginaWeb.urls')),
     path('nosotros/', include('PaginaWeb.urls')),
     path('Pago/', include('PaginaWeb.urls')),
+    path('pay/', PayView.as_view(), name ='pay-paypal'),
+    path('api/orders', CrearOrden.as_view())
     
     
 ]
