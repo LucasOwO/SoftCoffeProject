@@ -63,7 +63,7 @@ class pedido_usuario(models.Model):
 
 class reserva(models.Model):
     id_reserva = models.PositiveIntegerField(primary_key=True)
-    fec_res = models.DateField();
+    fec_res = models.DateField()
     
     def __str__(self):
         texto = "Reserva nro {0}"

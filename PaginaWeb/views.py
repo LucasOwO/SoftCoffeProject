@@ -36,6 +36,10 @@ def mostrarProductos(request):
     lista_p = producto.objects.filter(categoria="Cafe")
     return render(request, 'Productos.html', {"productos": lista_p})
 
+def reserva(request):
+    context={}
+    return render(request, 'reserva.html', context)
+
 def mostrarOfertas(request):
     context = {}
     return render(request, 'ofertas.html', context)
@@ -100,5 +104,6 @@ class CrearOrden(APIView):
 
         order = create_order('Productos')
         print('-------------')
-        print(order['id'])
+        #print(order['id'])
         return Response({'code': 'ok'}, status = status.HTTP_200_OK )
+

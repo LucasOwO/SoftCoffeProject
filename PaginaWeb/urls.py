@@ -17,6 +17,8 @@ urlpatterns = [
     path('nosotros', views.acercaDeNostros),
     path('ofertas', views.mostrarOfertas),
     path('Pago', views.mostrarPago),
+    path('reserva', views.reserva),
+    
     
     
 ]
