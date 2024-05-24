@@ -1,6 +1,10 @@
+from django import forms
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from .models import producto
+from django.views import View
+from django.views.generic import FormView, TemplateView
+from .funciones import generateAccessToken
 
 
 # Create your views here.
@@ -41,6 +45,10 @@ def mostrarCarta(request):
     context = {}
     return render(request, 'carta.html', context)
 
+def mostrarPago(request):
+    context ={}
+    return render(request, 'Pago.html', context)
+
 def agregar_producto(request):
     nom_p = request.POST['txt_nombre']
     precio_p = request.POST['txt_precio']
@@ -63,3 +71,23 @@ def eliminar_producto(request,id_prod):
 
 def editar_producto():
     return redirect('/administrador')
+
+#CONFIGURACION DE PAYPAL
+
+class PayForm(forms.Form):
+    count = forms.IntegerField()
+    
+    
+class PayView(FormView):
+    tamplate_name = 'pago.html'
+    form_class = PayForm
+    success_url = '/'
+    
+def form_valid(self, form):
+    print(form.cleaned_data['count'])
+    #
+    print("------------")
+    respuesta = generateAccessToken()
+    print(respuesta)
+    return super.form_valid(form)
+

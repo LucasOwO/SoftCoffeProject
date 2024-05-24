@@ -20,7 +20,7 @@
         <a class="navbar-brand" href="#">
             <img src="{% static 'imagenes/SoftCoffee.png' %}" alt="Logo" width="80" height="80" class="d-inline-block align-text-top">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button"  data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" >
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -39,6 +39,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="nosotros">Acerca de nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="Pago">Pago</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -115,8 +118,11 @@
     <div id="product-info"></div>
   </div>
 </div>
+ <!-- Initialize the JS-SDK -->
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{% static 'scripts/validaciones.js' %}"></script>
+    <script src="{%static 'scripts/paypal.js' %}"></script>
 </body>
 </html>
 

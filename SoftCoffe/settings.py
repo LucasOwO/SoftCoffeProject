@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'PaginaWeb'
+    'PaginaWeb',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

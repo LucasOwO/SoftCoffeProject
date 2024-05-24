@@ -30,5 +30,7 @@ urlpatterns = [
     path('carta/', include('PaginaWeb.urls')),
     path('ofertas/', include('PaginaWeb.urls')),
     path('nosotros/', include('PaginaWeb.urls')),
+    path('Pago/', include('PaginaWeb.urls')),
+    
     
 ]
