@@ -15,7 +15,7 @@ def generateAccessToken():
     auth = base64.b64encode(auth.encode()).decode('utf-8')
     
     respose = requests.post(
-        "https://api-m.sandbox.paypal.com/v2/checkout/orders",
+        "https://api-m.sandbox.paypal.com/v1/oauth2/token",
         
         data={"grant_type": "client_credentials"},
         headers={"authorization":f"basics {auth}"}
@@ -23,3 +23,34 @@ def generateAccessToken():
     
     print("=======================================")
     print(respose)
+
+def create_order(productos):
+    print(productos)
+
+    try:
+        access_token = generateAccessToken()
+
+        url = "https://api-m.sandbox.paypal.com/v2/checkout/orders"
+        
+        payload = {
+                "intent" : "CAPTURE",
+                "purchase_units" : [{
+                    "amount" : {
+                       "currency_code" : "USD",
+                       "Valuea" : "1"
+                    }
+                }
+            ]
+        }
+
+        headers = {
+            "Content-Type" : "application/json",
+            "Authotization": f"Bearer {access_token}"
+        }
+
+        response = requests.post(url, headers=headers, json=payload)
+
+        return response.json()
+    
+    except Exception as error:
+        print (error)

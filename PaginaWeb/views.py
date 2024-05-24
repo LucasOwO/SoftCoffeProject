@@ -5,7 +5,10 @@ from .models import producto
 from django.views import View
 from django.views.generic import FormView, TemplateView
 from .funciones import generateAccessToken
-
+#
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 
 # Create your views here.
 
@@ -91,3 +94,9 @@ def form_valid(self, form):
     print(respuesta)
     return super.form_valid(form)
 
+class CrearOrden(APIView):
+    def post(self, request):
+
+        orden = create_order('productos')
+
+        return Response({'code': 'ok'}, status = status.HTTP_200_OK )

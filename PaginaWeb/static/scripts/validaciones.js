@@ -301,7 +301,7 @@ const pagarButton = document.createElement('button');
 pagarButton.innerText = 'Pagar';
 pagarButton.classList.add('btn', 'btn-pagar');
 pagarButton.addEventListener('click', function() {
-    window.location.href = 'ruta-a-tu-pagina';
+    window.location.href = 'Pago';
 });
 containerCartProducts.appendChild(pagarButton);
 
