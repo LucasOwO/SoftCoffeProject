@@ -21,11 +21,13 @@ def generateAccessToken():
         headers={"authorization":f"basics {auth}"}
     )
     
-    print("=======================================")
-    print(respose)
+    data = respose.json() 
 
-def create_order(productos):
-    print(productos)
+    return data['access_token']
+
+
+def create_order(Productos):
+    print(Productos)
 
     try:
         access_token = generateAccessToken()
@@ -37,7 +39,7 @@ def create_order(productos):
                 "purchase_units" : [{
                     "amount" : {
                        "currency_code" : "USD",
-                       "Valuea" : "1"
+                       "Values" : "1"
                     }
                 }
             ]
