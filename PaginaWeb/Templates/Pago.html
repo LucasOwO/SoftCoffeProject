@@ -13,16 +13,18 @@
     
 
 <body>
-    <h1>Pago Paypal</h1>
-    <div>
-        <form method = "post">
-            {% csrf_token %}
-            {{form.as_p}}
-            
-        </form>
-    </div>
-    <div id="paypal-button-container"></div>
-    <p id="result-message"></p>
+    <section class="container" >
+        <h2>Pago Paypal</h2>
+        <div>
+            <form method = "post">
+                {% csrf_token %}
+                {{form.as_p}}
+                
+            </form>
+        </div>
+        <div id="paypal-button-container"></div>
+        <p id="result-message"></p>
+    </section>
 </body>
 
 
@@ -43,3 +45,27 @@
     }).render("#paypal-button-container")
 </script>
 </html>
+
+<style>
+   
+
+    .container{
+        justify-content: center;
+        text-align: center;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 43%;
+        left: 43%;
+        margin: -25px 0 0 -25px; 
+
+    }
+
+    body {
+        font: 1.3rem sans-serif;
+        padding: 0.5em;
+        margin: 0;
+    }
+
+
+</style>
