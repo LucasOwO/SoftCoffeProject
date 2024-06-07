@@ -10,7 +10,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-# Create your views here.
+
+
+
+# Renderización de páginas
 
 def index(request):
     context = {}
@@ -29,7 +32,7 @@ def registro(request):
     return render(request, 'registro.html', context)
 
 def administrador(request):
-    lista_productos = producto.objects.all()
+    lista_productos = producto.objects.all().order_by("-id_prod")
     return render(request, 'administrador.html', {"productos": lista_productos})
   
 def mostrarProductos(request):
@@ -56,6 +59,12 @@ def mostrarPago(request):
     context ={}
     return render(request, 'Pago.html', context)
 
+
+
+
+
+# Funcionalidades
+
 def agregar_producto(request):
     nom_p = request.POST['txt_nombre']
     precio_p = request.POST['txt_precio']
@@ -78,6 +87,12 @@ def eliminar_producto(request,id_prod):
 
 def editar_producto():
     return redirect('/administrador')
+
+
+
+
+
+
 
 #CONFIGURACION DE PAYPAL
 
