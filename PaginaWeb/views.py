@@ -1,10 +1,12 @@
 from django import forms
 from django.shortcuts import render, redirect
 from django.urls import reverse
+
+from PaginaWeb.funciones import capture_order, create_order, generateAccessToken
 from .models import producto
 from django.views import View
 from django.views.generic import FormView, TemplateView
-from .funciones import create_order, generateAccessToken
+
 #
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -88,37 +90,44 @@ def eliminar_producto(request,id_prod):
 def editar_producto():
     return redirect('/administrador')
 
-
-
-
-
-
-
-#CONFIGURACION DE PAYPAL
+#PAYPAL
 
 class PayForm(forms.Form):
     count = forms.IntegerField()
     
-    
 class PayView(FormView):
-    tamplate_name = 'pago.html'
+    template_name = 'pay.html'
     form_class = PayForm
     success_url = '/'
     
-def form_valid(self, form):
-    print(form.cleaned_data['count'])
-    #
-    print("------------")
-    respuesta = generateAccessToken()
-    print(respuesta)
-    return super.form_valid(form)
+    def form_valid(self, form):
+        print(form.cleaned_data['count'])
+        #
+        print('----')
+        respuesta = generateAccessToken()
+        print(respuesta)
+        return super().form_valid(form)
+
 
 class CrearOrden(APIView):
     
     def post(self, request):
-
         order = create_order('Productos')
-        print('-------------')
-        #print(order['id'])
-        return Response({'code': 'ok'}, status = status.HTTP_200_OK )
+        print('=====')
+        print(order['id'])
+        return Response(order, status=status.HTTP_200_OK)
+
+
+class CapturarOdernPaypal(APIView):
+    
+    def post(self, request, *args, **kwargs):
+        try:
+            order_id = self.kwargs['order_id']
+            response = capture_order(order_id)
+            return Response(response, status=status.HTTP_200_OK)
+        except Exception as error:
+            print(error)
+            return Response({'error': 'error aqui'}, status=status.HTTP_400_BAD_REQUEST)   
+
+
 

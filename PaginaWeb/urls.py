@@ -1,6 +1,10 @@
 from django.urls import path
 from . import views
-
+from PaginaWeb.views import (
+     PayView, 
+    CrearOrden,
+    CapturarOdernPaypal
+)
 
 #todas las urls van aquí
 urlpatterns = [
@@ -18,6 +22,9 @@ urlpatterns = [
     path('ofertas', views.mostrarOfertas),
     path('Pago', views.mostrarPago),
     path('reserva', views.reserva),
+    path('pay/', PayView.as_view(), name='pay-paypal'),
+    path('api/orders', CrearOrden.as_view(),),
+    path('api/orders/<order_id>/capture', CapturarOdernPaypal.as_view(),),
     
     
     

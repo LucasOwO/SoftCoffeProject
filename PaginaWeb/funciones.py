@@ -3,56 +3,67 @@ import base64
 import requests
 
 
-PAYPAL_CLIENT_ID = 'AaJMhZKXGuDY2evK_NtTFbpxZ20ajqV2JtPgBWpOGkOBSwwXmgtub-Kh8f1sNmL9Mq2gwlL3v44aprYJ'
-PAYPAL_CLIENT_SECRET ='EHRbkPAm3vgST8QI0wWLYs1m52YOtLezXTf6KbCQYIrkT8rXgTgAzbU5lHMcGSCEhaiMEGxzlPcPbcyS'
+
+
+PAYPAL_CLIENT_ID = 'Ae8-o9YXhziI8LXvf3O9HBKQu6GxE9vh0GkCbc4aS5hVIWtx-iFR6OwuKQNhnRCDVehgqauEym6HqcyQ'
+PAYPAL_CLIENT_SECRET ='EOA3qMv4G0bCn3b4SpQDAoS4rh-XIGiKzVuDa_FTMt4qHvvEQRxGlKquIyvZ-PQlTmiYAM1nSB3T0P_U'
 BASE_URL = "https://api-m.sandbox.paypal.com"
 
 def generateAccessToken():
     if not PAYPAL_CLIENT_ID or not PAYPAL_CLIENT_SECRET:
-        raise ValueError('no existen credenciales')
+        raise ValueError('no se hay credenciales')
     
     auth = f"{PAYPAL_CLIENT_ID}:{PAYPAL_CLIENT_SECRET}"
     auth = base64.b64encode(auth.encode()).decode('utf-8')
     
     respose = requests.post(
         "https://api-m.sandbox.paypal.com/v1/oauth2/token",
-        
         data={"grant_type": "client_credentials"},
-        headers={"authorization":f"basics {auth}"}
+        headers={"Authorization": f"Basic {auth}"}
     )
-    
-    data = respose.json() 
-
+    data = respose.json()
     return data['access_token']
 
 
-def create_order(Productos):
-    print(Productos)
-
+def create_order(productos):
+    print(productos)
+    
     try:
-        access_token = generateAccessToken()
-
+        accsess_token = generateAccessToken()
         url = "https://api-m.sandbox.paypal.com/v2/checkout/orders"
-        
         payload = {
-                "intent" : "CAPTURE",
-                "purchase_units" : [{
-                    "amount" : {
-                       "currency_code" : "CLP",
-                       "Values" : "1"
+            "intent": "CAPTURE",
+            "purchase_units": [
+                {
+                    "amount": {
+                        "currency_code": "USD",
+                        "value": "5"
                     }
                 }
             ]
         }
-
         headers = {
-            "Content-Type" : "application/json",
-            "Authotization": f"Bearer {access_token}"
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {accsess_token}"
         }
-
+        
         response = requests.post(url, headers=headers, json=payload)
-
+        print('--- response ---', response.json())
         return response.json()
-    
     except Exception as error:
-        print (error)
+        print('*****')
+        print(error)
+
+
+def capture_order(orderID):
+    access_token = generateAccessToken()
+    url = f"https://api-m.sandbox.paypal.com/v2/checkout/orders/{orderID}/capture"
+    
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {access_token}"
+    }
+    
+    response = requests.post(url, headers=headers)
+    
+    return response.json()

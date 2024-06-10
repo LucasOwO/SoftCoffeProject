@@ -157,6 +157,8 @@ $(document).ready(function() {
 
 
 
+
+
 //Funcionalidades Carrito
 const btnCart = document.querySelector('.container-cart-icon');
 const containerCartProducts = document.querySelector('.container-cart-products');
