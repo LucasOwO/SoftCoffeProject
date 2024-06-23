@@ -9,23 +9,96 @@
 </head>
 <body>
    
-    <form class="container">
-        <h2 class="text-align">Reservas aqui!</h2>
-        <p>Si quiere reservar, porfavor ingrese sus datos primero</p>
-        <div>
-            <h6>Nombre</h6>
-            <input class="form-control" type="text" placeholder="Default input" aria-label="default input example">
-            <br>
-            <h6>correo</h6>
-            <input class="form-control" type="text" placeholder="Default input" aria-label="default input example">
-            <br>
-            <h6>telefono</h6>
-            <input class="form-control" type="text" placeholder="Default input" aria-label="default input example">
-            <br>
-            <p>despues de rellenar el formulario presione aqui</p>
-            <button type="button" class="btn btn-primary">Siguiente</button>
-        </div>
-        
-    </form>
+    <div class="container mt-5">
+        <h2 class="text-center">¡Reservas aquí!</h2>
+        <p class="text-center">Si quiere reservar, por favor ingrese sus datos primero.</p>
+        <form action="https://formspree.io/f/xldrrnaw" method="POST">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo</label>
+                <input type="email" class="form-control" id="correo" name="_replyto" placeholder="Ingrese su correo" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Ingrese su teléfono" required>
+            </div>
+            <div class="form-group">
+                <label for="fecha">Fecha de Reserva</label>
+                <input type="date" class="form-control" id="fecha" name="fecha_reserva" required>
+            </div>
+            <div class="form-group">
+                <label for="mensaje">Mensaje (opcional)</label>
+                <textarea class="form-control" id="mensaje" name="mensaje" rows="3" placeholder="Escribe un mensaje opcional"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Siguiente</button>
+        </form>
+    </div>
 </body>
 </html>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<footer>
+    <div class="footer-content">
+        <div class="social-links">
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="contact-info">
+            <p>Email: softcoffee@gmail.com</p>
+            <p>Teléfono: +34 123 456 789</p>
+            <p>Dirección: Calle Ejemplo, 123, Ciudad, País</p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SoftCoffee. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+    }
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    .social-links a {
+        color: #fff;
+        margin: 0 10px;
+        text-decoration: none;
+        font-size: 1.2em;
+    }
+    .social-links a:hover {
+        color: #ccc;
+    }
+    .contact-info p {
+        margin: 5px 0;
+    }
+    .footer-bottom {
+        margin-top: 20px;
+        font-size: 0.9em;
+    }
+</style>

@@ -10,3 +10,56 @@
 <body>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="{% static 'scripts/validaciones.js' %}"></script>
+
+  <footer>
+    <div class="footer-content">
+        <div class="social-links">
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="contact-info">
+            <p>Email: softcoffee@gmail.com</p>
+            <p>Teléfono: +34 123 456 789</p>
+            <p>Dirección: Calle Ejemplo, 123, Ciudad, País</p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SoftCoffee. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+    }
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    .social-links a {
+        color: #fff;
+        margin: 0 10px;
+        text-decoration: none;
+        font-size: 1.2em;
+    }
+    .social-links a:hover {
+        color: #ccc;
+    }
+    .contact-info p {
+        margin: 5px 0;
+    }
+    .footer-bottom {
+        margin-top: 20px;
+        font-size: 0.9em;
+    }
+</style>
