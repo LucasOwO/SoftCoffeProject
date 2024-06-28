@@ -1,24 +1,20 @@
 from django.db import models
-
-categorias_choices = (
-    ("CF","Cafés"),
-    ("SW", "Sandwiches"),
-    ("TG", "Tragos"),
-    ("PCT", "Picoteos"),
-    ("TT", "Tortas"),
-    ("PTR", "Postres"),
-    ("EX", "Extras"),
-    ("OTR", "Otros"),
-)
-
-
 # Create your models here.
+
+class categoria(models.Model):
+    id_categ = models.PositiveIntegerField(primary_key=True)
+    cod_categ = models.CharField(max_length=5)
+    nom_categ = models.CharField(max_length=30)
+    
+    def __str__(self):
+        texto = "{0}"
+        return texto.format(self.nom_categ)
 
 class producto(models.Model):
     id_prod = models.PositiveIntegerField(primary_key=True)
     nombre = models.CharField(max_length=25)
     precio = models.PositiveIntegerField()
-    categoria = models.CharField(max_length=15, choices=categorias_choices, default='OTR')
+    categoria = models.ForeignKey(categoria, on_delete=models.CASCADE)
     stock = models.PositiveIntegerField()
     descripcion = models.TextField(max_length=300)
     #imagen = models.ImageField(upload_to = 'IMGS / %Y/ %m /%d/', null=True)

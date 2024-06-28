@@ -1,7 +1,7 @@
 from django import forms
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from .models import producto
+from .models import producto, categoria
 from django.views import View
 from django.views.generic import FormView, TemplateView
 from .funciones import create_order, generateAccessToken
@@ -33,10 +33,11 @@ def registro(request):
 
 def administrador(request):
     lista_productos = producto.objects.all().order_by("-id_prod")
-    return render(request, 'administrador.html', {"productos": lista_productos})
+    lista_categorias = categoria.objects.all()
+    return render(request, 'administrador.html', {"productos": lista_productos,"categorias": lista_categorias})
   
 def mostrarProductos(request):
-    lista_p = producto.objects.filter(categoria="Cafe")
+    lista_p = producto.objects.filter(categoria="CF")
     return render(request, 'Productos.html', {"productos": lista_p})
 
 def reserva(request):
@@ -68,15 +69,17 @@ def mostrarPago(request):
 def agregar_producto(request):
     nom_p = request.POST['txt_nombre']
     precio_p = request.POST['txt_precio']
-    categ_p = request.POST['txt_categ']
+    categ_p = categoria.objects.get(cod_categ = request.POST['categ'])
     stock_p = request.POST['txt_stock']
     desc_p = request.POST['txt_desc']
-    img_p = request.POST['archivo_img']
+    #img_p = request.POST['archivo_img']
 
     list_p = producto.objects.all()
     id_p = len(list_p)+1
+    
+    
 
-    nuevo_producto = producto.objects.create(id_prod=id_p, nombre=nom_p, precio=precio_p, categoria=categ_p,stock=stock_p, descripcion=desc_p, imagen=img_p)
+    nuevo_producto = producto.objects.create(id_prod=id_p, nombre=nom_p, precio=precio_p, categoria=categ_p,stock=stock_p, descripcion=desc_p)
     return redirect('/administrador')
     
 def eliminar_producto(request,id_prod):
