@@ -74,10 +74,12 @@ def agregar_producto(request):
     desc_p = request.POST['txt_desc']
     #img_p = request.POST['archivo_img']
 
-    list_p = producto.objects.all()
-    id_p = len(list_p)+1
-    
-    
+    list_p = producto.objects.all().order_by('-id_prod')
+    try:
+        n = list_p[0].id_prod
+        id_p = n+1
+    except:
+        id_p = 1
 
     nuevo_producto = producto.objects.create(id_prod=id_p, nombre=nom_p, precio=precio_p, categoria=categ_p,stock=stock_p, descripcion=desc_p)
     return redirect('/administrador')
