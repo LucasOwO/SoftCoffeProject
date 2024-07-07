@@ -6,7 +6,7 @@
         <title>Administrador</title>
         <link rel="stylesheet" href="/static/Styles/Admin.css">
     </head>
-    <body>
+    <body onload="">
         <header>
         <!-- Barra de navegacón-->
 
@@ -15,7 +15,7 @@
         <section class="seccion_administrar">
             
             <!-- Lista de elementos -->
-            <h1 class="txt_blanco">Listar productos</h1>
+            <h1>Listar productos</h1>
             <div class="recuadro_listar">
             
                 
@@ -26,7 +26,7 @@
                         <h3 class="titulo_producto">{{p.nombre}}</h3>
                         <h4 class="precio_producto">${{p.precio}}</h4>
 
-                        <a href="">
+                        <a href="editar_producto/{{p.id_prod}}">
                         <button  class="btn_producto posicion_editar">Editar</button>
                         </a>
 
@@ -39,32 +39,43 @@
             </div> 
         </section>
 
-        <!-- formulario -->
-
         <!--/agregar_producto/-->
 
         <br><br>
         <div class="seccion_administrar">
             <h1>Agregar Producto</h1>
             <form action="agregar_producto" method="POST"> {%csrf_token%}
-                <input type="text" id="txt_nombre" name="txt_nombre" class="control-form" placeholder="NOMBRE" required><br><br>
-                <input type="text" id="txt_precio" name="txt_precio" class="control-form" placeholder="PRECIO" required><br><br>
+                <label>Nombre</label><br>
+                <input type="text" id="txt_nombre" name="txt_nombre" class="control-form" onchange="habil_aceptar()" value="" required>
+                <text id="error_nombre" class="c_rojo"></text><br><br>
+
+                <label>Precio</label><br>
+                <input type="text" id="txt_precio" name="txt_precio" class="control-form" onchange="habil_aceptar()" value ="" required>
+                <text id="error_precio" class="c_rojo"></text><br><br>
+
+                <label>Categoria</label><br>
                 <select id="categ" name="categ">
                     {% for c in categorias %}
-
-                    <option value="{{c.cod_categ}}">{{c.nom_categ}}</option>
-
+                        {% if c.cod_categ == "NULO" %}
+                        <option value="{{c.cod_categ}}" selected>{{c.nom_categ}}</option>
+                        {% else %}
+                        <option value="{{c.cod_categ}}">{{c.nom_categ}}</option>
+                        {% endif %}
                     {% endfor %}
-
                 </select><br><br>
-                <input type="text" id="txt_stock" name="txt_stock" class="control-form" placeholder="STOCK" required><br><br>
-                <textarea id="txt_desc" name="txt_desc" class="control-form txt_area_grande" placeholder="DESCRIPCION"></textarea><br><br>
+
+                <label>Stock</label><br>
+                <input type="text" id="txt_stock" name="txt_stock" class="control-form" onchange="habil_aceptar()" required>
+                <text id="error_stock" class="c_rojo"></text><br><br>
+
+                <label>Descripción</label><br>
+                <textarea id="txt_desc" name="txt_desc" class="control-form txt_area_grande" ></textarea><br><br>
                 <!--input id="archivo_img" type="file" name="archivo_img" accept="image/" required><br><br-->
-                <button type="submit">Agregar</button>
+                <button id="btn_agregar" type="submit" disabled>Agregar</button>
             </form>
         </div>
 
         <br><br>
-        <script src="static/scripts/admin.js"></script>
+        <script src="/static/scripts/admin.js"></script>
     </body>
 </html>

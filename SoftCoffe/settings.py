@@ -124,7 +124,7 @@ STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = [
     BASE_DIR / 'PaginaWeb/static/imagenes',
-    BASE_DIR / 'PaginaWeb/static/styles',
+    BASE_DIR / 'PaginaWeb/static/Styles',
     BASE_DIR / 'PaginaWeb/static/scripts'
 ]
 
