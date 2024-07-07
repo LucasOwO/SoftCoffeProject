@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <title>Editar producto</title>
+        <link rel="stylesheet" href="/static/Styles/Admin.css">
+    </head>
+    <body>
+        <section class="seccion_administrar">
+            <h1>Editar producto</h1>
+            <form action="editar_prod/{{producto.id_prod}}" method="POST"> {%csrf_token%}
+                <label>Nombre</label><br>
+                <input type="text" id="txt_nombre" name="txt_nombre" class="control-form" value="{{producto.nombre}}" onchange="habil_aceptar()" required>
+                <text id="error_nombre" class="c_rojo"></text><br><br>
+
+                <label>Precio</label><br>
+                <input type="text" id="txt_precio" name="txt_precio" class="control-form" value="{{producto.precio}}" onchange="habil_aceptar()" required>
+                <text id="error_precio" class="c_rojo"></text><br><br>
+
+                <label>Categoria: {{producto.categoria}}</label><br>
+                <select id="categ" name="categ" onchange="habil_aceptar()">
+                    {% for c in categorias %}
+                        {% if c.cod_categ == "NULO" %}
+                        <option value="{{c.cod_categ}}" selected>{{c.nom_categ}}</option>
+                        {% else %}
+                        <option value="{{c.cod_categ}}">{{c.nom_categ}}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select><br><br>
+
+                <label>Stock</label><br>
+                <input type="text" id="txt_stock" name="txt_stock" class="control-form" value="{{producto.stock}}" onchange="habil_aceptar()" required>
+                <text id="error_stock" class="c_rojo"></text><br><br>
+
+                <label>Descripción</label><br>
+                <textarea id="txt_desc" name="txt_desc" class="control-form txt_area_grande" onchange="habil_aceptar()">{{producto.descripcion}}</textarea><br><br>
+                <!--input id="archivo_img" type="file" name="archivo_img" accept="image/" required><br><br-->
+                <button id="btn_agregar" type="submit" disabled>Editar</button>
+            </form>
+        </section>
+        <script type="text/javascript" src="/static/scripts/admin.js"></script>
+    </body>
+</html>

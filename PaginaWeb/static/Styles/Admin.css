@@ -10,6 +10,10 @@ ul {
 
 
 /* Pequeñas correcciones */
+
+.c_rojo{
+    color: red;
+}
 .bg_gris{
     background-color: #6d6d6d;
 }
@@ -21,7 +25,10 @@ ul {
 .txt_area_grande{
     height: 75px;
     width: 400px;
+    resize: none;
 }
+
+
 
 
 /* Id y clases */
@@ -39,7 +46,7 @@ ul {
 
 
 .recuadro_listar{
-    border-radius: 25px;
+    border-radius: 25px 5px 25px 5px;
     background-color: #b89b4e;
     height: 50vh;
     overflow-y: auto;
@@ -89,7 +96,6 @@ ul {
     margin: 0;
     height: 25px;
     width: 60px;
-    background-color: #fecc42;
     border: none;
     border-radius: 5px;
     transition: 0.2s;
@@ -102,48 +108,15 @@ ul {
 }
 
 .posicion_editar{
+    background-color: #7babff;
     position: absolute;
     left: 15px;
     bottom: 5px;
 }
 
 .posicion_eliminar{
+    background-color: #ff7b7b;
     position: absolute;
     right: 15px;
     bottom: 5px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.contenedor_item_admin{
-    width: 100%;
-    height: 100px;
-    display: grid;
-    grid-template-columns: 5% auto auto auto auto auto;
-    row-gap: 2px;
-}
-
-.item_admin{
-    border: 1px solid rgba(163, 161, 161, 0.8);
-    padding: 2px 3px;
-    font-size: 15px;
-    text-align:right;
 }

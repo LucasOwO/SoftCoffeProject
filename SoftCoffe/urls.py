@@ -26,6 +26,7 @@ urlpatterns = [
     path('agregar_producto/', include('PaginaWeb.urls')),
     path('eliminar_producto/', include('PaginaWeb.urls')),
     path('editar_producto/', include('PaginaWeb.urls')),
+    path('editar_producto/', include('PaginaWeb.urls')),
     path('admin/', admin.site.urls),
     path('Productos/', include('PaginaWeb.urls')),
      path('reserva/', include('PaginaWeb.urls')),

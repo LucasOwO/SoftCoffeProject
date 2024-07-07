@@ -35,6 +35,11 @@ def administrador(request):
     lista_productos = producto.objects.all().order_by("-id_prod")
     lista_categorias = categoria.objects.all()
     return render(request, 'administrador.html', {"productos": lista_productos,"categorias": lista_categorias})
+
+def editar_producto(request,id_p):
+    prod = producto.objects.get(id_prod = str(id_p))
+    lista_categorias = categoria.objects.all()
+    return render(request, 'editar_producto.html', {"producto": prod,"categorias": lista_categorias})
   
 def mostrarProductos(request):
     lista_p = producto.objects.filter(categoria="CF")
@@ -84,14 +89,29 @@ def agregar_producto(request):
     nuevo_producto = producto.objects.create(id_prod=id_p, nombre=nom_p, precio=precio_p, categoria=categ_p,stock=stock_p, descripcion=desc_p)
     return redirect('/administrador')
     
-def eliminar_producto(request,id_prod):
-    prod = producto.objects.get(id_prod=id_prod)
+def eliminar_producto(request,id_p):
+    prod = producto.objects.get(id_prod=id_p)
     prod.delete()
-
     return redirect('/administrador')
 
-def editar_producto():
+def editar_prod(request, id_p):
+    prod = producto.objects.get(id_prod=id_p)
+    
+    prod.nombre = request.POST['txt_nombre']
+    prod.precio = request.POST['txt_precio']
+    prod.stock = request.POST['txt_stock']
+    prod.descripcion = request.POST['txt_desc']
+    
+    if request.POST['categ'] != "NULO":
+        prod.categoria =  categoria.objects.get(cod_categ = request.POST['categ'])
+    
+    prod.save()
     return redirect('/administrador')
+    
+    
+    
+
+    
 
 
 
