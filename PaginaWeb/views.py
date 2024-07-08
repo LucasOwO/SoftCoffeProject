@@ -42,7 +42,7 @@ def editar_producto(request,id_p):
     return render(request, 'editar_producto.html', {"producto": prod,"categorias": lista_categorias})
   
 def mostrarProductos(request):
-    lista_p = producto.objects.filter(categoria="CF")
+    lista_p = producto.objects.filter(categoria="1")
     return render(request, 'Productos.html', {"productos": lista_p})
 
 def reserva(request):
