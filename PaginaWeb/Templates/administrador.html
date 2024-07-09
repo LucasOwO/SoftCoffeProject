@@ -37,6 +37,35 @@
                 {% endfor %}
 
             </div> 
+            <label>Filtrar por: </label>
+            {% for c in categorias %}
+                {#Categoria entrante deshabilitada#}
+                {% if c.cod_categ == cod_categoria %}
+                    {% if c.cod_categ == "NULO"%}
+                        <a href="/administrador/{{c.cod_categ}}">
+                            <button disabled>Todos</button>
+                        </a>
+                    {% else%}
+                        <a href="/administrador/{{c.cod_categ}}">
+                            <button disabled>{{c.nom_categ}}</button>
+                        </a>
+                    {% endif %}
+
+                {#Categoria elegible#}
+                {% elif c.cod_categ != cod_categoria%}
+                    {% if c.cod_categ == "NULO"%}
+                        <a href="/administrador/{{c.cod_categ}}">
+                            <button>Todos</button>
+                        </a>
+                    {% else%}
+                        <a href="/administrador/{{c.cod_categ}}">
+                            <button>{{c.nom_categ}}</button>
+                        </a>
+                    {% endif %}
+                
+                {% endif %}
+            {% endfor %}
+            
         </section>
 
         <!--/agregar_producto/-->

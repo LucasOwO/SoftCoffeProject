@@ -31,10 +31,16 @@ def registro(request):
     context = {}
     return render(request, 'registro.html', context)
 
-def administrador(request):
-    lista_productos = producto.objects.all().order_by("-id_prod")
+def administrador(request, cod_c):
+    categ = categoria.objects.get(cod_categ=cod_c) #Por alguna razón se cae aquí al agregar productos
+    
+    if cod_c != "NULO":
+        lista_productos = producto.objects.filter(categoria=categ.id_categ).order_by("-id_prod")
+    else:
+        lista_productos = producto.objects.all().order_by("categoria", "-id_prod")
+    
     lista_categorias = categoria.objects.all()
-    return render(request, 'administrador.html', {"productos": lista_productos,"categorias": lista_categorias})
+    return render(request, 'administrador.html', {"productos": lista_productos,"categorias": lista_categorias, "cod_categoria":cod_c})
 
 def editar_producto(request,id_p):
     prod = producto.objects.get(id_prod = str(id_p))
@@ -87,12 +93,12 @@ def agregar_producto(request):
         id_p = 1
 
     nuevo_producto = producto.objects.create(id_prod=id_p, nombre=nom_p, precio=precio_p, categoria=categ_p,stock=stock_p, descripcion=desc_p)
-    return redirect('/administrador')
+    return redirect('/administrador/NULO')
     
 def eliminar_producto(request,id_p):
     prod = producto.objects.get(id_prod=id_p)
     prod.delete()
-    return redirect('/administrador')
+    return redirect('/administrador/NULO')
 
 def editar_prod(request, id_p):
     prod = producto.objects.get(id_prod=id_p)
@@ -106,7 +112,7 @@ def editar_prod(request, id_p):
         prod.categoria =  categoria.objects.get(cod_categ = request.POST['categ'])
     
     prod.save()
-    return redirect('/administrador')
+    return redirect('/administrador/NULO')
     
     
     

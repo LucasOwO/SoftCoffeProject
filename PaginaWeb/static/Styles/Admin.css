@@ -11,6 +11,10 @@ ul {
 
 /* Pequeñas correcciones */
 
+#filtro{
+    margin-top: 5px;
+}
+
 .c_rojo{
     color: red;
 }

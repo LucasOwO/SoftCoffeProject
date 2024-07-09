@@ -30,6 +30,11 @@ class pedido(models.Model):
     def __str__(self):
         texto = "Pedido {0}"
         return texto.format(self.cod_pedido)
+    
+class producto_pedido(models.Model):
+    cod_pedido_FK = models.ForeignKey(pedido, on_delete=models.CASCADE)
+    id_prod_FK = models.ForeignKey(producto, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField()
 
 class reserva(models.Model):
     id_reserva = models.PositiveIntegerField(primary_key=True)
